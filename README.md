@@ -12,7 +12,7 @@ This repo implements the full data-to-inference workflow for a magnetorheologica
 4. **PGM models**: static Bayesian Net, 2-state HMM  
 5. **GNN**: Spatio-Temporal Graph Convolution (ST-GCN)  
 6. **Hybrid**: convex fusion of ST-GCN + HMM  
-7. **Evaluation**: F1, RMSE, latency, tremor suppression
+7. **Evaluation**: F1, RMSE, latency, tremor suppression potential
 
 ## Installation
 
