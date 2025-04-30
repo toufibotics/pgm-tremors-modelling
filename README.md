@@ -1,4 +1,4 @@
-# pgm-tremors
+# pgm-tremors-modelling
 
 An adaptive, hybrid PGM + GNN pipeline for real-time tremor detection and suppression in Parkinson’s Disease and Essential Tremor.
 
@@ -31,6 +31,8 @@ dvc pull
 ```
 
 Main files are in: 00_processing.ipynb and 01_modelling.ipynb with visualizations and core project. NOTE: make sure to update paths in notebooks to local or relative repository for the notebooks to output.
+
+Overleaf report pdf: https://www.overleaf.com/project/6809cbc8b5737e2d2cb4b524
 
 Dataset DOI: https://doi.org/10.5061/dryad.fbg79cp1d
 
