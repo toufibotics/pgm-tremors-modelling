@@ -1,0 +1,11 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+# Jupyter checkpoints
+.ipynb_checkpoints/
+# macOS
+.DS_Store
+# DVC cache and data
+.dvc/cache/
+src/data/PD_IMU_XLS/Data/

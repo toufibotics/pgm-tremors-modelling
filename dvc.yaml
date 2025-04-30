@@ -1,0 +1,59 @@
+stages:
+  ingest:
+    cmd: python -m data.ingest ../pd_imu_dataset
+    deps:
+      - ../pd_imu_dataset
+      - src/data/ingest.py
+    outs:
+      - data/raw
+      - data/metadata.json
+
+  convert:
+    cmd: python -m data.ingest --to-h5
+    deps:
+      - data/raw
+      - src/data/ingest.py
+    outs:
+      - data/interim
+    params:
+      - sampling_rate
+
+  preproc:
+    cmd: python -m data.preproc
+    deps:
+      - data/interim
+      - src/data/preproc.py
+    outs:
+      - data/interim_pre
+    params:
+      - filters.hp
+      - filters.lp
+
+  window:
+    cmd: python -m data.window
+    deps:
+      - data/interim_pre
+      - src/data/window.py
+    outs:
+      - data/processed/X_windows.npz
+    params:
+      - win
+      - hop
+
+    features:
+    cmd: python -m features.build --sr 200
+    deps:
+      - data/processed/X_windows.npz
+      - src/features/imu_time.py
+      - src/features/imu_freq.py
+      - src/features/build.py
+    outs:
+      - data/processed/features.npz
+
+  split:
+    cmd: python -m data.split
+    deps:
+      - data/processed/features.npz
+      - src/data/split.py
+    outs:
+      - data/processed/split

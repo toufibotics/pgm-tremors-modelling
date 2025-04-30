@@ -1,0 +1,18 @@
+# A Five-Sensor IMU-Based Parkinson's Disease Patient and Control Dataset Including Three Activities of Daily Living
+---
+
+Parkinson’s disease is an often-debilitating progressive neurological condition leading to loss of motor control. This dataset contains kinematic sensor data from two groups: one containing 15 patients with Parkinson’s disease, and a control group of 19 participants without any known neurological condition. Participant ages ranged from 40-85, 21 were male and 13 were female. The participants wore five 9-axis Inertial Measurement Units (IMUs) – one on each upper arm, each lower arm, and on their head. They were asked to perform a calibration pose, followed by three activities: making toast, putting on a cardigan, and unlocking and opening a door, with each activity repeated three times. The IMUs recorded time-series acceleration and orientation data from the moment where the participant was instructed to begin the activity (inception of the idea to act), through to the activity’s completion. This dataset is planned for use in intent-sensing studies for assistive device control, but is also applicable for activity recognition.
+
+Data in this study came from a set of 34 volunteers, 15 of whom had Parkinson’s disease and 19 of whom did not. 21 of the participants were male and 13 female, with ages ranging from 40 to 85. All volunteers signed an informed consent form and ethical approval for the study was obtained from the NRES Committee South West (REC reference 13/SW/0287). The data collection was performed by research nurses, who supervised the participants throughout the process.
+
+Initially, the participants stood in a calibration pose, with their arms by their sides, with this data recorded for standardization. The participants then performed three activities of daily living (ADLs) – unlocking and opening a door, buttoning and unbuttoning a cardigan, and making toast. Each activity was repeated three times, without a break. Data recording began at the moment the participant was instructed to begin the task.
+
+The participants each wore five Xsens IMU three-axis nine-channel IMUs (MTx, Xsens Technologies B. V., Enschede, Netherlands). These were secured to the participants lower and upper arms (both left and right), and to their head.
+
+During the activities, the participant was engaged in conversation by the supervising research nurses, but were asked not to talk about the activity they were performing. This engagement was aimed at making the motor behaviour more natural and to better represent activities of daily living in which cognitive loading is increased due to the application of multitasking.
+
+Each IMU provided magnetometer, gyroscope and accelerometer data, along with a 3x3 rotation matrix provided by the XSens software.
+
+## Description of the data and file structure
+
+The data is separated into a separate folder for each participant, with each trial saved as a separate xls file, which can be opened in Microsoft Excel or similar, and imported into software such as Matlab. The files are named according to which of the three Activities of Daily Living they correspond to. Each xls file contains five sheets, each labelled with the position of the corresponding IMU sensor. The first column is the time in seconds after activity inception. Cal1-Cal3 are the X, Y and Z acceleration components from the accelerometer, in m/s^2. Cal4-Cal6 are the X, Y and Z components of the angular velocity from the gyroscope, measured in rad/s. Cal7-Cal9 are the X, Y and Z components of the magnetic field strength from the magnetometer, in arbitrary units, where 1 is the magnetic field strength at Xsens. Mat1-Mat9 are the components of the 3x3 rotation matrix representing the sensor's orientation.
