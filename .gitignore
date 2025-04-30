@@ -8,6 +8,6 @@ __pycache__/
 .DS_Store
 # DVC cache and data
 .dvc/cache/
-src/data/PD_IMU_XLS/Data/
-data/
-data/
+# src/data/PD_IMU_XLS/Data/
+# data/
+# data/
