@@ -30,7 +30,7 @@ pip install -r requirements.txt
 dvc pull
 ```
 
-Main files are in: 00_processing.ipynb and 01_modelling.ipynb with visualizations and core project.
+Main files are in: 00_processing.ipynb and 01_modelling.ipynb with visualizations and core project. NOTE: make sure to update paths in notebooks to local or relative repository for the notebooks to output.
 
 Dataset DOI: https://doi.org/10.5061/dryad.fbg79cp1d
 
