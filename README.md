@@ -32,4 +32,5 @@ dvc pull
 
 Main files are in: 00_processing.ipynb and 01_modelling.ipynb with visualizations and core project.
 
+Dataset DOI: https://doi.org/10.5061/dryad.fbg79cp1d
 
