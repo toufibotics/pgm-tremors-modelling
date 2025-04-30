@@ -9,3 +9,5 @@ __pycache__/
 # DVC cache and data
 .dvc/cache/
 src/data/PD_IMU_XLS/Data/
+data/
+data/
