@@ -15,9 +15,9 @@
 
 * [**IEEE BSN 2025 Poster (PDF)**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN%202025%20poster.pdf)
 
-* [**IEEE BSN 2025 Awardee Talk (PPT)**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN25-Toufic-Jrab-Fire-PPT.pptx)
+* [**IEEE BSN 2025 Awardee Talk (PDF)**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN25-Toufic-Jrab-Awardee.pdf)
 
-* [**Initial Project Report - COMP 588**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/Initial%20Research%20Report%20-%20COMP%20588.pdf)
+* [**Initial Project Report - COMP 588 (PDF)**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/Initial%20Research%20Report%20-%20COMP%20588.pdf)
 
 * [**Dataset DOI**](https://datadryad.org/dataset/doi:10.5061/dryad.fbg79cp1d)
 
