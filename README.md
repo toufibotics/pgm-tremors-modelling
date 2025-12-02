@@ -1,38 +1,188 @@
-# pgm-tremors-modelling
+# **pgm-tremors-modelling**
 
-An adaptive, hybrid PGM + GNN pipeline for real-time tremor detection and suppression in Parkinson’s Disease and Essential Tremor.
+**Hybrid ST-GCN/HMM Tremor-State Detector for a Wearable MR-Fluid Exoskeletons**
 
-## Overview
+> End-to-end modelling pipeline for low-latency tremor detection using **Spatio-Temporal Graph Convolutional Networks (ST-GCN)** fused with a **2-state Hidden Markov Model (HMM)**.
+> Designed for safe, real-time deployment in a **battery-powered MR-fluid tremor-suppression orthosis**.
+>
+> *(Corresponds to the IEEE BSN 2025 submission by Jrab)* 
 
-This repo implements the full data-to-inference workflow for a magnetorheological-fluid exoskeleton prototype:
+---
 
-1. **Data ingestion & preprocessing** via DVC  
-2. **Feature extraction** from 200 Hz IMU & sEMG streams  
-3. **Baselines**: rule-based FFT threshold, LSTM classifier  
-4. **PGM models**: static Bayesian Net, 2-state HMM  
-5. **GNN**: Spatio-Temporal Graph Convolution (ST-GCN)  
-6. **Hybrid**: convex fusion of ST-GCN + HMM  
-7. **Evaluation**: F1, RMSE, latency, tremor suppression potential
+## **Overview**
 
-## Installation
+This repository contains the complete workflow described in the BSN 2025 paper, including preprocessing, baseline models, probabilistic graphical models, the lightweight ST-GCN encoder, and the hybrid fusion with an HMM back-end.
+
+The modelling approach is grounded in the safety constraints of wearable robotic tremor-suppression systems:
+
+* **<80 ms total control-loop budget**
+* **Physiological dwell time (~100 ms) for tremor onset/offset**
+* **Posteriors must be calibrated** to avoid accidental 15 Nm damper stiffening
+* **Low-energy real-time inference** on Jetson-class embedded hardware
+
+The final hybrid model achieves:
+
+* **AUC = 0.70 ± 0.01** on held-out subjects (ADL data)
+* **Sub-15 ms projected inference** (INT8, Jetson Nano CPU)
+* **Significant calibration improvement** and reduction of spurious spikes
+* **Best NLL** among all tested detectors
+
+
+---
+
+## **Pipeline Summary**
+
+### **1. Signal Processing**
+
+* 200 Hz **6-channel IMU** (lower-arm)
+* 0.5–20 Hz band-pass filtering
+* 1.28 s windows (256 samples, 50% overlap)
+* Channel-wise ℓ2 normalization
+* Dataset: **34 subjects × 3 ADLs**, ~8k labeled windows
+
+
+### **2. Baselines**
+
+| Class             | Models                                 |
+| ----------------- | -------------------------------------- |
+| **Rule-based**    | Welch PSD dominant-frequency threshold |
+| **Probabilistic** | Bayesian Network (D, RMS features)     |
+| **Temporal PGM**  | BN-driven HMM                          |
+| **Neural**        | Two-layer LSTM                         |
+| **Graph-based**   | ST-GCN encoder (22k params)            |
+
+### **3. Proposed Model**
+
+#### **ST-GCN Encoder**
+
+* 6-node spatial graph
+* Intra-modal + cross-axis edges
+* Temporal kernel (k = 3)
+* 3 residual GCN blocks
+* Global average pooling → 32-D embedding
+* Fully connected classifier head
+
+
+#### **Bayesian Network (BN)**
+
+* Dominant frequency & RMS
+* Multinomial–Dirichlet closed-form posterior
+* Robust under low-SNR ADL motions
+
+
+#### **HMM Fusion Back-End**
+
+* 2-state HMM (tremor vs voluntary motion)
+* Encodes onset/offset probabilities
+* Enforces a **100 ms physiological dwell-time**
+* Forward recursion in **0.05 ms**
+* Fusion via ( \ell_t = θ p_t + (1−θ) o_t ), ( θ=0.6 )
+
+
+---
+
+## **Key Results (Held-Out Subjects)**
+
+| Model             | Prec    | Rec | F1  | AUC      | Latency (ms) |
+| ----------------- | ------- | --- | --- | -------- | ------------ |
+| Rule              | .26     | .49 | .34 | .55      | 0.02         |
+| Bayesian Net      | .25     | .79 | .38 | .62      | 0.03         |
+| LSTM              | .33     | .42 | .37 | .64      | 21.6         |
+| ST-GCN            | .37     | .65 | .47 | .68      | 16.6         |
+| HMM-BN            | .28     | .98 | .43 | .38      | 0.05         |
+| **Hybrid (Ours)** | **.41** | .32 | .36 | **0.70** | **15.2**     |
+|                   |         |     |     |          |              |
+
+**Highlights**
+✔ Best **AUC** and **NLL**
+✔ Large improvement in **posterior calibration**
+✔ Major reduction in **false high-confidence spikes** (≈3× fewer)
+✔ Meets all real-time constraints for safe exoskeleton control
+
+
+---
+
+## **Repository Structure**
+
+```
+pgm-tremors-modelling/
+│
+├── notebooks/
+│   ├── 00_processing.ipynb       # Preprocessing, feature engineering, EDA
+│   └── 01_modelling.ipynb        # Baselines, ST-GCN, BN, HMM, hybrid fusion
+│
+├── src/
+│   ├── models/                   # ST-GCN, BN, HMM classes
+│   ├── utils/                    # Filtering, windowing, feature extraction
+│   └── viz/                      # Reproducible figures & plots
+│
+├── data/                         # DVC-managed dataset (not stored in repo)
+└── requirements.txt
+```
+
+---
+
+## **Installation & Reproduction**
+
+### 1. Clone
 
 ```bash
-# 1. Clone code
-git clone https://github.com/Laith309/pgm-tremors.git
-cd pgm-tremors
+git clone https://github.com/toufibotics/pgm-tremors-modelling.git
+cd pgm-tremors-modelling
+```
 
-# 2. Python environment
+### 2. Environment
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+```
 
-# 3. Fetch large data via DVC
+### 3. Pull Dataset (DVC)
+
+```bash
 dvc pull
 ```
 
-Main files are in: 00_processing.ipynb and 01_modelling.ipynb with visualizations and core project. NOTE: make sure to update paths in notebooks to local or relative repository for the notebooks to output.
+### 4. Run Notebooks
 
-Overleaf report pdf: https://www.overleaf.com/project/6809cbc8b5737e2d2cb4b524
+Start with:
 
-Dataset DOI: https://doi.org/10.5061/dryad.fbg79cp1d
+* **`00_processing.ipynb`** — data ingestion, windowing, filtering
+* **`01_modelling.ipynb`** — all models + hybrid fusion + metrics
+
+> **Note**: Update notebook paths if executing from outside repo root.
+
+---
+
+## **Paper & External Resources**
+
+* **IEEE BSN 2025 Paper (PDF)**
+  Hybrid ST-GCN/HMM Tremor Detector for a Wearable MR-Fluid Exoskeleton
+
+---
+
+## **Research Contributions**
+
+**Important to note that this project was envisioned within McGill's COMP 588 (Probabilistic Graphical Models), taught by Dr. Siamak Ravanbakhsh, whose inputs and lectures were instrumental to making this project a reality.** 
+
+This repository implements all components of the BSN 2025 study, contributing:
+
+1. **First reported fusion of ST-GCN with probabilistic temporal smoothing**
+   for wearable tremor suppression under ADLs.
+2. **Hardware-aware design** achieving sub-15 ms projected inference.
+3. **Calibration-focused pipeline** enabling safe MR-damper triggering.
+4. **Open-source, fully reproducible preprocessing** for the five-sensor Dryad dataset.
+
+
+---
+
+## **Contact**
+
+**Toufic Jrab**
+
+toufic.jrab@mail.mcgill.ca
+
+
 
