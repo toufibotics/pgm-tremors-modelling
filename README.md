@@ -5,7 +5,21 @@
 > End-to-end modelling pipeline for low-latency tremor detection using **Spatio-Temporal Graph Convolutional Networks (ST-GCN)** fused with a **2-state Hidden Markov Model (HMM)**.
 > Designed for safe, real-time deployment in a **battery-powered MR-fluid tremor-suppression orthosis**.
 >
-> *(Corresponds to the IEEE BSN 2025 submission by Jrab)* 
+> *(Corresponds to the IEEE BSN 2025 submission by Jrab)*
+
+---
+
+## **Paper & External Resources**
+
+* [**IEEE BSN 2025 Paper (PDF)**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN%202025%20-%20Full%20Paper.pdf)
+
+* [**IEEE BSN 2025 Poster (PDF)**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN%202025%20poster.pdf)
+
+* [**IEEE BSN 2025 Awardee Talk (PPT)**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN25-Toufic-Jrab-Fire-PPT.pptx)
+
+* [**Initial Project Report - COMP 588**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/Initial%20Research%20Report%20-%20COMP%20588.pdf)
+
+* [**Dataset DOI**](https://datadryad.org/dataset/doi:10.5061/dryad.fbg79cp1d)
 
 ---
 
@@ -153,17 +167,6 @@ Start with:
 * **`01_modelling.ipynb`** — all models + hybrid fusion + metrics
 
 > **Note**: Update notebook paths if executing from outside repo root.
-
----
-
-## **Paper & External Resources**
-
-* **IEEE BSN 2025 Paper (PDF)**
-  [Hybrid ST-GCN/HMM Tremor Detector for a Wearable MR-Fluid Exoskeleton](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN%202025%20-%20Full%20Paper.pdf)
-
-* [**Initial Project Report - COMP 588**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/Initial%20Research%20Report%20-%20COMP%20588.pdf)
-
-* [**Dataset DOI**](https://datadryad.org/dataset/doi:10.5061/dryad.fbg79cp1d)
 
 ---
 
