@@ -159,7 +159,11 @@ Start with:
 ## **Paper & External Resources**
 
 * **IEEE BSN 2025 Paper (PDF)**
-  Hybrid ST-GCN/HMM Tremor Detector for a Wearable MR-Fluid Exoskeleton
+  [Hybrid ST-GCN/HMM Tremor Detector for a Wearable MR-Fluid Exoskeleton](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN%202025%20-%20Full%20Paper.pdf)
+
+* [**Initial Project Report - COMP 588**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/Initial%20Research%20Report%20-%20COMP%20588.pdf)
+
+* [**Dataset DOI**](https://datadryad.org/dataset/doi:10.5061/dryad.fbg79cp1d)
 
 ---
 
