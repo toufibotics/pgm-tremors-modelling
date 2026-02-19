@@ -12,7 +12,7 @@ T. Jrab, "Hybrid ST-GCN/HMM Tremor Detector for a Wearable MR-Fluid Exoskeleton,
 
 © 2025 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
 
-**Published Version:** Available at IEEE Xplore: https://ieeexplore.ieee.org/document/10.1109/BSN66969.2025.11337705
+**Published Version:** Available at IEEE Xplore: https://ieeexplore.ieee.org/document/11337705 
 
 > End-to-end modelling pipeline for low-latency tremor detection using **Spatio-Temporal Graph Convolutional Networks (ST-GCN)** fused with a **2-state Hidden Markov Model (HMM)**.
 > Designed for safe, real-time deployment in a **battery-powered MR-fluid tremor-suppression orthosis**.
