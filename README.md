@@ -1,6 +1,18 @@
-# **pgm-tremors-modelling**
+# Hybrid ST-GCN/HMM Tremor Detector for a Wearable MR-Fluid Exoskeleton
+**pgm-tremors-modelling**
 
-**Hybrid ST-GCN/HMM Tremor-State Detector for a Wearable MR-Fluid Exoskeletons**
+**Authors:** T. Jrab
+
+**Published in:** 2025 IEEE 21st International Conference on Body Sensor Networks (BSN), Los Angeles, CA, USA
+
+**Full Citation:**  
+T. Jrab, "Hybrid ST-GCN/HMM Tremor Detector for a Wearable MR-Fluid Exoskeleton," *2025 IEEE 21st International Conference on Body Sensor Networks (BSN)*, Los Angeles, CA, USA, 2025, pp. 1-4, doi: 10.1109/BSN66969.2025.11337705.
+
+**Keywords:** Body sensor networks; Actuators; Smoothing methods; Hidden Markov models; Detectors; Robot sensing systems; Probabilistic logic; Safety; Wearable devices; Long short term memory; Wearable robotics; Tremor suppression; Graph neural networks; Hidden Markov models; Body sensor networks
+
+© 2025 IEEE. Personal use of this material is permitted. Permission from IEEE must be obtained for all other uses, in any current or future media, including reprinting/republishing this material for advertising or promotional purposes, creating new collective works, for resale or redistribution to servers or lists, or reuse of any copyrighted component of this work in other works.
+
+**Published Version:** Available at IEEE Xplore: https://ieeexplore.ieee.org/document/10.1109/BSN66969.2025.11337705
 
 > End-to-end modelling pipeline for low-latency tremor detection using **Spatio-Temporal Graph Convolutional Networks (ST-GCN)** fused with a **2-state Hidden Markov Model (HMM)**.
 > Designed for safe, real-time deployment in a **battery-powered MR-fluid tremor-suppression orthosis**.
@@ -11,7 +23,7 @@
 
 ## **Paper & External Resources**
 
-* [**IEEE BSN 2025 Paper (PDF)**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN%202025%20-%20Full%20Paper.pdf)
+* [**IEEE BSN 2025 Accepted Paper (PDF)**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN%202025%20-%20Full%20Paper.pdf)
 
 * [**IEEE BSN 2025 Poster (PDF)**](https://github.com/toufibotics/pgm-tremors-modelling/blob/main/BSN%202025%20poster.pdf)
 
